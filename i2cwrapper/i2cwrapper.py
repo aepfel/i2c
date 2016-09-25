@@ -11,9 +11,9 @@ class Wrapper(object):
 
     def __init__(self, y=2):
 	self.bus = smbus.SMBus(y)
-        self.w_queue = []
-        self.r_queue = []
-        self.locked = False
+        self.w_queue = [] #Write_queue
+        self.r_queue = [] #read_queue
+        self.locked = False #should be semaphor, that indicates angoing busaccess
 
     def write(self, caddress, raddress, value):
         self.w_queue.append([caddress, raddress, value])
